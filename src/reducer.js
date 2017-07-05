@@ -6,7 +6,9 @@ import {
 } from './actionTypes';
 
 export default function createDataReducer ({ name, initialState = { collection: [] } }) {
-  return (state = initialState, action) => {
+  const defaultState = _.assign(initialState, { isDataSet: true });
+
+  return (state = defaultState, action) => {
     if (action.name === name) {
       switch (action.type) {
         case DATA_SET_PUSH_ITEMS: {
@@ -14,15 +16,16 @@ export default function createDataReducer ({ name, initialState = { collection: 
             ? _.concat(action.data, state.collection)
             : _.concat(state.collection, action.data);
           return {
+            ...state,
             collection,
           };
         }
         case DATA_SET_REMOVE_ITEMS: {
           const collection = _.reject(state.collection, action.query);
-          return (collection.length === state.collection.length) ? state : { collection };
+          return (collection.length === state.collection.length) ? state : { ...state, collection };
         }
         case DATA_SET_CLEAN_COLLECTION: {
-          return { initialState };
+          return { ...defaultState };
         }
         default:
           return state;
