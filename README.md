@@ -29,7 +29,7 @@ export default combineReducers({
 
 ### Actions
 
-```javasript
+```javascript
 import { dataCollectionClean, dataCollectionPush, dataCollectionRemove } from 'redux-data-set';
 
 // Add item(s) to data set.
@@ -50,7 +50,7 @@ return dataCollectionClean('yourDataSlice');
 
 ### Data selection
 
-```javasript
+```javascript
 import { connect } from 'redux';
 import { collectionSelector } from 'redux-data-set';
 
