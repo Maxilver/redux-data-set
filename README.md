@@ -58,3 +58,16 @@ connect(state => ({
   items: collectionSelector(state, 'yourDataSlice'),
   otherItems: collectionSelector(state, 'otherDataSlice')
 }))(YourComponent);
+```
+
+## Example
+
+Clone and run a dummy example
+
+```
+git clone git@github.com:Maxilver/redux-data-set.git
+npm i
+npm start
+```
+
+Now you can see the example on your localhost:8080
